@@ -1,0 +1,286 @@
+<!-- URL de inspiración: https://www.geopoliticalmonitor.com/ -->
+<!-- Autor: Marcio Manuel Tejada Rodríguez Grupo 4 -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoPulse — Análisis Geopolítico Global</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f0f4f8; color: #0b1a2e; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header { background: linear-gradient(135deg, #0b1a2e 0%, #132a45 100%); color: #fff; padding: 16px 0; border-bottom: 3px solid #00b4d8; }
+    header .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #00b4d8; }
+    .logo span { color: #f0c040; }
+    nav ul { display: flex; list-style: none; gap: 20px; flex-wrap: wrap; }
+    nav a { color: #b0c4de; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.2s; }
+    nav a:hover { color: #00b4d8; }
+    .header-actions { display: flex; gap: 16px; align-items: center; }
+    .header-actions a { color: #b0c4de; text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    .header-actions a:hover { color: #f0c040; }
+    .header-actions .author-name { color: #f0c040; font-weight: 700; font-size: 0.85rem; }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #0b1a2e 0%, #1a3a5c 100%); color: #fff; padding: 60px 0; }
+    .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    @media (max-width: 768px) { .hero .container { grid-template-columns: 1fr; } }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; line-height: 1.2; margin-bottom: 16px; }
+    .hero h1 span { color: #f0c040; }
+    .hero p { color: #9bb8da; font-size: 1rem; margin-bottom: 24px; max-width: 500px; }
+    .hero-img { background: #1a3a5c; border-radius: 8px; width: 100%; max-width: 600px; height: 400px; display: flex; align-items: center; justify-content: center; color: #666; font-size: 0.9rem; text-align: center; padding: 20px; background-size: cover; background-position: center; }
+    .btn { background: #00b4d8; color: #fff; padding: 10px 22px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.2s; }
+    .btn:hover { background: #0090b0; transform: translateY(-1px); }
+
+    /* Video section - full width */
+    .video-section { background: linear-gradient(135deg, #0b1a2e 0%, #132a45 100%); padding: 40px 20px; margin-bottom: 40px; box-shadow: 0 4px 24px rgba(0,180,216,0.1); width: 100%; }
+    .video-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 48px; align-items: flex-start; justify-content: center; }
+    @media (max-width: 860px) { .video-inner { flex-direction: column; align-items: center; } }
+    .video-left { flex: 0 0 auto; width: 420px; }
+    .video-right { flex: 1; min-width: 0; padding-top: 8px; }
+    .video-right h2 { color: #00b4d8; font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 12px; }
+    .video-desc { color: #9bb8da; font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px; }
+    .video-highlights { display: flex; flex-direction: column; gap: 14px; }
+    .vh-item { display: flex; align-items: center; gap: 12px; color: #b0c4de; font-size: 0.9rem; }
+    .vh-icon { font-size: 1.2rem; width: 28px; text-align: center; }
+    .video-wrapper { position: relative; width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 0 24px rgba(0,180,216,0.2); }
+    .video-wrapper video { width: 100%; display: block; border-radius: 10px; }
+
+    /* Sections */
+    .section-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 40px 0 24px; padding-bottom: 8px; border-bottom: 2px solid #00b4d8; display: inline-block; color: #0b1a2e; }
+
+    /* Global highlight */
+    .global-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 40px; }
+    @media (max-width: 768px) { .global-grid { grid-template-columns: 1fr; } }
+    .card-featured { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,180,216,0.08); border: 1px solid #e8edf2; }
+    .card-featured img { width: 100%; height: 240px; object-fit: cover; }
+    .card-featured .card-body { padding: 24px; }
+    .card-featured h2 { font-size: 1.3rem; margin-bottom: 8px; color: #0b1a2e; }
+    .card-featured .tag { font-size: 0.75rem; color: #00b4d8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-featured p { color: #4a6a8a; font-size: 0.9rem; }
+    .card-side { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 16px rgba(0,180,216,0.08); border: 1px solid #e8edf2; }
+    .card-side h3 { font-size: 1rem; margin-bottom: 4px; color: #0b1a2e; }
+    .card-side .meta { font-size: 0.75rem; color: #7a9ab8; }
+    .card-side .item { padding: 12px 0; border-bottom: 1px solid #e8edf2; }
+    .card-side .item:last-child { border-bottom: none; }
+
+    /* Region grid */
+    .region-tabs { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+    .region-tabs button { background: none; border: 2px solid #c8d6e5; padding: 8px 20px; border-radius: 24px; font-weight: 600; font-size: 0.85rem; cursor: pointer; color: #4a6a8a; transition: all 0.2s; }
+    .region-tabs button:hover, .region-tabs button.active { border-color: #00b4d8; color: #fff; background: #00b4d8; }
+
+    .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-bottom: 48px; }
+    .article-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,180,216,0.06); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #e8edf2; }
+    .article-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,180,216,0.12); }
+    .article-card .art-img { height: 160px; background: #1a3a5c; background-size: cover; background-position: center; }
+    .article-card .art-body { padding: 16px; }
+    .article-card .art-tag { font-size: 0.7rem; color: #00b4d8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .article-card h3 { font-size: 1rem; margin: 6px 0; color: #0b1a2e; }
+    .article-card p { font-size: 0.85rem; color: #4a6a8a; }
+    .article-card .art-date { font-size: 0.75rem; color: #7a9ab8; }
+
+    /* Footer */
+    footer { background: linear-gradient(135deg, #0b1a2e 0%, #06101f 100%); color: #7a9ab8; padding: 32px 0; margin-top: 40px; text-align: center; font-size: 0.85rem; }
+    footer a { color: #00b4d8; text-decoration: none; }
+    footer a:hover { color: #f0c040; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">Geo<span>Pulse</span></div>
+      <nav>
+        <ul>
+          <li><a href="#">Global</a></li>
+          <li><a href="#">África</a></li>
+          <li><a href="#">Américas</a></li>
+          <li><a href="#">Asia</a></li>
+          <li><a href="#">Europa</a></li>
+          <li><a href="#">Oriente Medio</a></li>
+          <li><a href="#">Ártico</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="https://www.geopoliticalmonitor.com/" target="_blank" class="author-name">Marcio Manuel Tejada Rodríguez</a>
+        <a href="https://www.geopoliticalmonitor.com/" target="_blank" style="background: #00b4d8; color: #fff; padding: 8px 18px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; text-decoration: none;">geopoliticalmonitor.com</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div>
+        <h1>Análisis <span>Geopolítico</span> para un Mundo en Cambio</h1>
+        <p>Información independiente y objetiva sobre conflictos internacionales, seguridad energética, cadenas de suministro y tendencias macroeconómicas.</p>
+        <a href="#" class="btn">Explorar Informes</a>
+      </div>
+      <div class="hero-img" style="background-image: url('header_geopolitico.png');">
+        &nbsp;
+      </div>
+    </div>
+  </section>
+
+    <!-- Video Destacado (full-width) -->
+    <section class="video-section">
+      <div class="video-inner">
+        <div class="video-left">
+          <div class="video-wrapper">
+            <video controls preload="metadata">
+              <source src="Why China and Russia don't fear the West.mp4" type="video/mp4">
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
+        </div>
+        <div class="video-right">
+          <h2>Video Destacado</h2>
+          <p class="video-desc">Análisis geopolítico en profundidad sobre las potencias mundiales. Exploramos las dinámicas de poder entre China, Rusia y Occidente en el contexto global actual.</p>
+          <div class="video-highlights">
+            <div class="vh-item">
+              <span class="vh-icon">🌍</span>
+              <span>Tensiones geopolíticas y alianzas estratégicas</span>
+            </div>
+            <div class="vh-item">
+              <span class="vh-icon">📡</span>
+              <span>Doctrinas de disuasión de la Guerra Fría</span>
+            </div>
+            <div class="vh-item">
+              <span class="vh-icon">🔬</span>
+              <span>Análisis de inteligencia y defensa</span>
+            </div>
+          </div>
+          <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #1a3a5c;">
+            <p style="color: #00b4d8; font-weight: 700; font-size: 0.8rem; margin-bottom: 6px;">🎧 Audio en Español — Análisis Geopolítico</p>
+            <audio controls style="width: 100%; display: block;">
+              <source src="Audio-Why China and Russia don't fear the West.mp3" type="audio/mpeg">
+              Tu navegador no soporta la reproducción de audio.
+            </audio>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <div class="container">
+
+    <!-- Global Section -->
+    <h2 class="section-title">Global</h2>
+    <div class="global-grid">
+      <div class="card-featured">
+        <img src="https://placehold.co/800x240/2a2a4a/c9a84c?text=Tensión+Geopolítica+Global" alt="Noticia destacada global">
+        <div class="card-body">
+          <span class="tag">Informe de Situación</span>
+          <h2>Nuevo Orden Mundial: Reconfiguración de Alianzas Estratégicas en 2026</h2>
+          <p>El tablero geopolítico se redefine con la consolidación de bloques regionales y la creciente influencia de potencias medias en la escena internacional.</p>
+        </div>
+      </div>
+      <div class="card-side">
+        <div class="item">
+          <span class="tag">Análisis</span>
+          <h3>La Carrera por los Minerales Críticos</h3>
+          <div class="meta">30 Jun 2026</div>
+        </div>
+        <div class="item">
+          <span class="tag">Op Ed</span>
+          <h3>¿Hacia una Desglobalización Selectiva?</h3>
+          <div class="meta">28 Jun 2026</div>
+        </div>
+        <div class="item">
+          <span class="tag">Informe</span>
+          <h3>Ciberseguridad y Guerra Híbrida</h3>
+          <div class="meta">25 Jun 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Region Tabs -->
+    <h2 class="section-title">Regiones</h2>
+    <div class="region-tabs">
+      <button class="active">África</button>
+      <button>Américas</button>
+      <button>Asia</button>
+      <button>Europa</button>
+      <button>Oriente Medio</button>
+      <button>Ártico</button>
+    </div>
+
+    <!-- Articles Grid -->
+    <div class="articles-grid">
+      <div class="article-card">
+        <div class="art-img" style="background-image: url('https://placehold.co/400x200/2d5a3e/c9a84c?text=África');"></div>
+        <div class="art-body">
+          <span class="art-tag">África</span>
+          <h3>Nuevos Corredores Comerciales en el Sahel</h3>
+          <p>Las alianzas regionales reconfiguran las rutas comerciales en África Occidental.</p>
+          <div class="art-date">1 Jul 2026</div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="art-img" style="background-image: url('https://placehold.co/400x200/1e3a5f/c9a84c?text=Américas');"></div>
+        <div class="art-body">
+          <span class="art-tag">Américas</span>
+          <h3>Realineamiento Estratégico en América Latina</h3>
+          <p>El auge de nuevos bloques comerciales y la disputa por recursos estratégicos.</p>
+          <div class="art-date">30 Jun 2026</div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="art-img" style="background-image: url('https://placehold.co/400x200/5f1e3a/c9a84c?text=Asia');"></div>
+        <div class="art-body">
+          <span class="art-tag">Asia</span>
+          <h3>India y el Indo-Pacífico: La Nueva Frontera</h3>
+          <p>La proyección de poder india redefine el equilibrio estratégico en Asia.</p>
+          <div class="art-date">29 Jun 2026</div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="art-img" style="background-image: url('https://placehold.co/400x200/1e5f3a/c9a84c?text=Europa');"></div>
+        <div class="art-body">
+          <span class="art-tag">Europa</span>
+          <h3>Autonomía Estratégica Europea: ¿Realidad o Ficción?</h3>
+          <p>La UE busca reducir su dependencia externa en defensa y energía.</p>
+          <div class="art-date">28 Jun 2026</div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="art-img" style="background-image: url('https://placehold.co/400x200/5f3a1e/c9a84c?text=Oriente+Medio');"></div>
+        <div class="art-body">
+          <span class="art-tag">Oriente Medio</span>
+          <h3>La Nueva Diplomacia del Golfo</h3>
+          <p>Las monarquías del Golfo diversifican sus alianzas más allá del petróleo.</p>
+          <div class="art-date">27 Jun 2026</div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="art-img" style="background-image: url('https://placehold.co/400x200/3a5f5f/c9a84c?text=Ártico');"></div>
+        <div class="art-body">
+          <span class="art-tag">Ártico</span>
+          <h3>El Ártico: Nueva Ruta Comercial y Militar</h3>
+          <p>El deshielo abre nuevas rutas y tensiones entre las potencias árticas.</p>
+          <div class="art-date">26 Jun 2026</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 GeoPulse — Análisis Geopolítico. Creado por <strong>Marcio Manuel Tejada Rodríguez</strong> — Grupo 4.</p>
+      <p style="margin-top: 8px;">Inspirado en <a href="https://www.geopoliticalmonitor.com/" target="_blank">Geopolitical Monitor</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
